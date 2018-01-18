@@ -1,0 +1,14 @@
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\bin\Debug\QDICodeChallenge.Test.dll
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\bin\Debug\QDICodeChallenge.Test.pdb
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\obj\Debug\QDICodeChallenge.Test.dll
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\obj\Debug\QDICodeChallenge.Test.pdb
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\obj\Debug\QDICodeChallenge.Test.csprojResolveAssemblyReference.cache
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\bin\Debug\QDICodeChallenge.Test.dll
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\bin\Debug\QDICodeChallenge.Test.pdb
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\obj\Debug\QDICodeChallenge.Test.csprojResolveAssemblyReference.cache
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\obj\Debug\QDICodeChallenge.Test.dll
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Test\obj\Debug\QDICodeChallenge.Test.pdb

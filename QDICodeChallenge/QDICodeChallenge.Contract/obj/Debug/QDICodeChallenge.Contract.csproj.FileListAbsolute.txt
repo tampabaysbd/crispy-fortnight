@@ -1,0 +1,13 @@
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\bin\Debug\QDICodeChallenge.Contract.dll
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\bin\Debug\QDICodeChallenge.Contract.pdb
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\obj\Debug\QDICodeChallenge.Contract.dll
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\obj\Debug\QDICodeChallenge.Contract.pdb
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\obj\Debug\QDICodeChallenge.Contract.csprojResolveAssemblyReference.cache
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\bin\Debug\QDICodeChallenge.Models.dll
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\bin\Debug\QDICodeChallenge.Models.pdb
+E:\sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\bin\Debug\QDICodeChallenge.Contract.dll
+E:\sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\bin\Debug\QDICodeChallenge.Contract.pdb
+E:\sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\bin\Debug\QDICodeChallenge.Models.dll
+E:\sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\bin\Debug\QDICodeChallenge.Models.pdb
+E:\sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\obj\Debug\QDICodeChallenge.Contract.dll
+E:\sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Contract\obj\Debug\QDICodeChallenge.Contract.pdb

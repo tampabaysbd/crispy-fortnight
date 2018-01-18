@@ -1,0 +1,48 @@
+﻿
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "validationtest" }))
+{
+    <input type="text"
+           id="username" name="username"
+           pattern="^[\p{L} \.'\-]+$"
+           placeholder="Username"
+           maxlength="100"
+           requireddata-role="validate"
+           title="Username"
+           data-content="The username is required. The username must 
+           be a series of common name characters only." /><br />
+
+    <input type="text"
+            id="zipcode" name="zipcode"
+            pattern="[0-9\-]{5,}"
+            placeholder="Zip Code"
+            maxlength="100"
+            requireddata-role="validate"
+            title="Zip Code"
+            data-content="The zip code is required. The zip code 
+            must be 5 to 10 characters and may contain a dash" /><br />
+
+     <button type="button"
+             class="btn btn-primary"
+             data-role="trigger-validation">Validate</button>
+}
+<div id="msg"></div>
+
+<script>
+    $(function () {
+        var validator = new ValidationUtility();
+
+        $('[data-role="trigger-validation"]').click(function () {
+            if (validator.validate('')) {
+                $('#msg').text('Valid');
+                // post to server
+            }
+            else {
+                $('#msg').text('Invalid');
+            }
+        });
+    });
+</script>

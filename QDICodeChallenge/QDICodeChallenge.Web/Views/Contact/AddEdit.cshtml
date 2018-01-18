@@ -1,0 +1,296 @@
+﻿@model QDICodeChallenge.Web.ViewModels.ContactViewModel
+
+@section scripts {
+<style>
+    label
+    {
+        display: inline-block;
+        width: 100px;
+        text-align: right;
+    }  
+
+    input[type="text"]
+    {
+        border-radius: .3em;
+        margin-bottom: 10px;
+        padding-left: 2px;
+    }
+
+    #success-msg, #fail-msg, #delete-msg
+    {
+        display: none;
+    }
+</style>
+    
+<script>
+    $(function () {
+        var addEditForm = $('#AddEditForm')[0];
+        var progressBar = $('#progress-bar');
+
+        var ZipCode = function () {
+            this.zipcodeid = ko.observable("@Model.contact.zipcode.zipcodeid");
+            this.city = ko.observable("@Model.contact.zipcode.city");
+            this.state = ko.observable("@Model.contact.zipcode.state");
+            this.country = ko.observable("@Model.contact.zipcode.country");
+            this.updated = ko.observable("@Model.contact.zipcode.updated");
+            this.updatedby = ko.observable("@Model.contact.zipcode.updatedby");
+        };
+
+        var Contact = function () {
+            this.id = ko.observable("@Model.contact.id" );
+            this.firstname = ko.observable("@Model.contact.firstname");
+            this.lastname = ko.observable("@Model.contact.lastname");
+            this.zipcodeid = ko.observable("@Model.contact.zipcodeid");
+            this.zipcode;
+        };
+
+        if ($("#zipcode").val() == 0)
+                $("#location").hide();
+
+        var ViewModel = function (contact) {
+            this.model = contact;
+
+            this.errorMessage = ko.observable();
+
+            this.hideProgressBar = function (showAfterHideFunc) {
+                progressBar.fadeOut(function () {
+                    showAfterHideFunc();
+                });
+            };
+
+            this.showError = function (error) {
+                var resetUI = function () {
+                    $('#command-buttons').fadeIn();
+                    $('#fail-msg').fadeIn();
+                };
+                vm.hideProgressBar(resetUI);
+
+                if (error.statusText) {
+                    vm.errorMessage(error.statusText);
+                };
+
+                if (error.responseText) {
+                    var msg = JSON.parse(error.responseText);
+                    var keys = _.keys(msg);
+                    var txt = '';
+
+                    _.each(keys, function (key) {
+                        txt += msg[key] + ' ';
+                    });
+                    vm.errorMessage(txt);
+                }
+            };
+
+            this.showSuccess = function () {
+                var resetUI = function () {
+                    $('#command-buttons').fadeIn();
+                    $('#fail-msg').fadeOut();
+                    $('#delete-msg').fadeOut();
+                    $('#success-msg').fadeIn();
+                };
+                vm.hideProgressBar(resetUI);
+                var fadeOut = function () {
+                    $('#success-msg').fadeOut();
+                };
+                _.delay(fadeOut, 8000);
+            };
+
+            this.showDelete = function () {
+                $('#fail-msg').fadeOut();
+                $('#delete-msg').fadeIn();
+
+                $('.cmd').each(function (i, element) {
+                    $('element').prop('disabled', true).addClass('muted');
+                });
+            };
+
+            this.save = function () {
+                var zip = $('#zipcode').val();
+                if (zip.length < 1)
+                {
+                    zip = '~';
+                }
+                this.GetZip(zip);
+            };
+
+            this.GetZip = function (zip) {
+                $.getJSON("http://ZiptasticAPI.com/" + zip + "?callback=?", function (json) {
+                    if (json.error == null) {
+                        vm.model.zipcode.zipcodeid = zip;
+                        vm.model.zipcode.city = json.city;
+                        vm.model.zipcode.state = json.state;
+                        vm.model.zipcode.country = json.country;
+                        $("#zipcity").text(json.city);
+                        $("#zipstate").text(json.state)
+                        $("#zipcountry").text(json.country)
+                        $("#location").show();
+
+                    }
+                    else {
+                        $('#zipcode').val(null);
+                        $('#location').hide();
+                    }
+                })
+                .done(function () {
+                    var validator = new ValidationUtility();
+
+                    if (validator.validate('#AddEditForm')) {
+                        $('#command-buttons').hide();
+                        $('#progress-bar').fadeIn();
+
+                        var contact = ko.toJS(vm.model);
+                        contactDataService.save(contact).done(function (response) {
+                            if (response.id) {
+                                vm.model.id(response.id);
+                            }
+                            vm.showSuccess();
+
+                        }).fail(function (error) {
+                            vm.showError(error);
+                        });
+                    }
+
+                });
+            };
+
+            this.requestDelConfirm = function () {
+                $('#deleteConfirmation').modal();
+            };
+
+            this.del = function () {
+                var contact = ko.toJS(this.model);
+                contactDataService.del(contact).done(function (response) {
+                    vm.showDelete();
+                }).fail(function (error) {
+                    vm.showError(error);
+                }).always(function () {
+                    $('#deleteConfirmation').modal('hide');
+                });
+            };
+        };
+
+        var contact = new Contact();
+        contact.zipcode = new ZipCode();
+        var vm = new ViewModel(contact);
+        ko.applyBindings(vm);
+    });
+</script>
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "AddEditForm" }))
+{
+    <div class="row">
+        <label for="firstName">First Name:&nbsp;</label>
+        <input type="text"
+               id="firstName" name="firstName"
+               data-bind="value: model.firstname"
+               pattern="^[A-Z][a-zA-Z \.'\-]+$"
+               placeholder="First Name"
+               maxlength="100"
+               autofocus
+               required
+               data-role="validate"
+               title="First Name"
+               data-content="First Name is required. The first letter must be capitialized and can contain
+               any common name characters up to 100 charaters long." /><br />
+
+        <label for="lastName">Last Name:&nbsp;</label>
+        <input type="text"
+               id="lastName" name="lastName"
+               data-bind="value: model.lastname"
+               pattern="^[A-Z][a-zA-Z \.'\-]+$"
+               placeholder="Last Name"
+               maxlength="100"
+               required
+               data-role="validate"
+               title="Last Name"
+               data-content="Last Name is required. The first letter must be capitialized and can contain
+               any common name characters up to 100 charaters long." /><br />
+
+        <label class="control-label" for="zipcode">Zip Code:&nbsp;</label>
+        <input type="text"
+               id="zipcode" name="zipcode"
+               data-bind="value: model.zipcodeid"
+               pattern="[0-9\-]{5,}"
+               placeholder="Zip Code"
+               maxlength="100"
+               required
+               data-role="validate"
+               title="Zip Code"
+               data-content="You must enter a valid Zip code. The zip code is required and must contain
+                5 to 10 numberic characters including a dash." /><br />
+        
+            <div id="location">
+                <label>Location:&nbsp;</label>
+                <span id="zipcity" data-bind="text: model.zipcode.city"></span>,
+                <span id="zipstate" data-bind="text: model.zipcode.state"></span>&nbsp;
+                <span id="zipcountry" data-bind="text: model.zipcode.country"></span>
+            </div>
+          
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-5">
+            <div id="progress-bar"
+                 class="progress progress-striped active fade-anim none">
+                <div class="bar" style="width: 100%;">(Working)</div>
+            </div>
+            <div id="command-buttons">
+                @if (!Model.IsAdd)
+                {
+                    <a href="#" id="delete-link" class="cmd" data-bind="click: requestDelConfirm" tabindex="=-1">Delete</a>
+                }
+                <button type="button" class="btn btn-primary btn-lg cmd" data-bind="click: save">Save</button>
+           </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="success-msg" class="col-md-12 alert alert-success push-down">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <h4>Contact Saved</h4>
+            <p>
+                The contact was saved. @Html.ActionLink("Add another", "add", "contact") or
+                @Html.ActionLink("return to contact list", "index", "contact")
+            </p>
+        </div>
+    </div>
+    <div class="row control">
+        <div id="fail-msg" class="col-md-12 alert alert-success push-down">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <h4>Error</h4>
+            <p>Something went wrong. Here's the error message:</p>
+            <p data-bind="text: errorMessage"></p>
+        </div>
+    </div>
+    <div class="row control">
+        <div id="delete-msg" class="col-md-12 alert push-down">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <h4>Contact Deleted</h4>
+            <p>
+                Return to the @Html.ActionLink("contact list", "index", "contact") or
+                @Html.ActionLink("add a new home", "add", "contact")
+            </p>
+        </div>
+    </div>
+}
+
+<div tabindex="-1" id="deleteConfirmation" class="modal fade" role="dialog" aria-labelledby="del-confirm-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h2 id="del-confirm-label">Confirm Delete</h2>
+        </div>
+        <div class="modal-body">
+            <div>Are you sure you want to delete this contact?</div>
+            <div class="alert alert-error push-down"><strong>Note:</strong>There is no way to undo this action.</div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <button class="btn btn-primary" data-bind="click: del">Delete Contact</button>
+        </div>
+    </div>
+</div>     

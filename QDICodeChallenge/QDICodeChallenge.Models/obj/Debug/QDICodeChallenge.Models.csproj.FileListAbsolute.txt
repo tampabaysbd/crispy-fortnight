@@ -1,0 +1,10 @@
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Models\bin\Debug\QDICodeChallenge.Models.dll
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Models\bin\Debug\QDICodeChallenge.Models.pdb
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Models\obj\Debug\QDICodeChallenge.Models.dll
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Models\obj\Debug\QDICodeChallenge.Models.pdb
+C:\Users\wjgarcia\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Models\obj\Debug\QDICodeChallenge.Models.csprojResolveAssemblyReference.cache
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Models\bin\Debug\QDICodeChallenge.Models.dll
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Models\bin\Debug\QDICodeChallenge.Models.pdb
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Models\obj\Debug\QDICodeChallenge.Models.csprojResolveAssemblyReference.cache
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Models\obj\Debug\QDICodeChallenge.Models.dll
+E:\Sandbox\web_mvc\trunk\cc_wgarcia\QDICodeChallenge\QDICodeChallenge.Models\obj\Debug\QDICodeChallenge.Models.pdb

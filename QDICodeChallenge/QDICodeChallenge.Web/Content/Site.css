@@ -1,0 +1,81 @@
+﻿body
+{
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.branding
+{
+    padding-left: 10px;
+}
+
+header 
+{
+    border-top:10px solid #999;
+    padding-top:5px;
+    padding-bottom:5px;
+    border-bottom: 5px solid #999;
+}
+
+article {
+    margin-top:5px;
+}
+
+.row .control
+{
+    padding-bottom: 5px;
+}
+
+footer {
+    min-height:40px;
+    background-color:#999;
+    color:#eee;
+    margin-top:15px;
+    padding:20px;
+    text-align:center;
+}
+
+#breadcrum
+{
+    margin-bottom: 10px;
+}
+
+#success-msg, #fail-msg {
+    display:none;
+}
+
+.modal-dialog
+{
+    background-color: white !important;
+    border-radius: 1em;
+}
+
+.standout {
+    text-transform:uppercase;
+    font-weight:bold;
+}
+
+.center {
+    text-align:center;
+}
+
+.push-right {
+    margin-left:15px;
+}
+
+.push-down {
+    margin-top:15px;
+}
+
+.deferred, .none {
+    display:none;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
